@@ -36,6 +36,10 @@ namespace DAL
 
                 throw new Exception("ocorreu erro ao tentar inserir um usuario no banco de dados: ", ex);
             }
+              finally
+            {
+                cn.Close();
+            }
 
         }
         public List<Usuario> BuscarTodos()
@@ -112,7 +116,7 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                throw new Exception("ocorreu um erro ao tentar buscar por id ", ex);
+                throw new Exception("ocorreu um erro ao tentar buscar por Nome usuario ", ex);
             }
             finally { 
                 cn.Close(); 
@@ -155,6 +159,10 @@ namespace DAL
             {
                 throw new Exception("ocorreu um erro ao tentar buscar por id ",ex);
             }
+             finally
+            {
+                cn.Close();
+            }
         }
         public void Alterar(Usuario _usuario)
         {
@@ -180,7 +188,11 @@ namespace DAL
             catch (Exception ex)
             {
 
-                throw new Exception("ocorreu erro ao tentar inserir um usuario no banco de dados: ", ex);
+                throw new Exception("ocorreu erro ao tentar alterar um usuario no banco de dados: ", ex);
+            }
+             finally
+            {
+                cn.Close();
             }
         }
 
@@ -204,6 +216,10 @@ namespace DAL
             {
 
                 throw new Exception("ocorreu erro ao tentar excluir um usuario no banco de dados: ", ex);
+            }
+             finally
+            {
+                cn.Close();
             }
         }
 

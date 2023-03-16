@@ -34,15 +34,111 @@ namespace DAL
         }
         public List<Permissao> BuscarTodos()
         {
-            throw new NotImplementedException();
+            SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
+            List<Permissao> permissaos = new List<Permissao>();
+            Permissao permissao;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id , Descricao FROM Permissao";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        permissao = new Permissao();
+                        permissao.Id = Convert.ToInt32(rd["ID"]);
+                       permissao.Descricao = rd["Descricao"].ToString();
+                        permissaos.Add(permissao);
+
+                    }
+                }
+                return permissaos;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ocorreu um erro ao tentar buscar todos os NomeGrupo banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
         public List<Permissao> BuscarPorDescricao(string _descricao)
         {
-            throw new NotImplementedException();
+            SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
+            List<Permissao> permissaos = new List<Permissao>();
+            Permissao permissao;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id,Desacricao FROM Permissao WHERE Descricao = @Descricao";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Descricao", _descricao);
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                       permissao = new Permissao();
+                        permissao.Id = Convert.ToInt32(rd["ID"]);
+                        permissao.Descricao = rd["Descricao"].ToString();
+                        permissaos.Add(permissao);
+
+                    }
+                }
+                return permissaos;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ocorreu um erro ao tentar buscar por Descricao no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
         public List<Permissao> BuscarPorId(int _Id)
         {
-            throw new NotImplementedException();
+
+            SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
+            List<Permissao> permissaos = new List<Permissao>();
+            Permissao permissao;
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = "SELECT Id , Descricao FROM Permissao WHERE Id = @Id";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@Id", _Id);
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        permissao = new Permissao();
+                        permissao.Id = Convert.ToInt32(rd["ID"]);
+                        permissao.Descricao = rd["Descricao"].ToString();
+                        permissaos.Add(permissao);
+
+                    }
+                }
+                return permissaos;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ocorreu um erro ao tentar buscar por ID no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
         public void Alterar(Permissao _permissao)
         {
@@ -63,7 +159,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                throw new Exception("ocorreu erro ao tentar inserir um usuario no banco de dados: ", ex);
+                throw new Exception("ocorreu erro ao tentar alterar uma permissao no banco de dados: ", ex);
             }
         }
         public void Excluir(int _id)
@@ -85,7 +181,7 @@ namespace DAL
             catch (Exception ex)
             {
 
-                throw new Exception("ocorreu erro ao tentar excluir um usuario no banco de dados: ", ex);
+                throw new Exception("ocorreu erro ao tentar excluir uma permissao no banco de dados: ", ex);
             }
         }
     }
