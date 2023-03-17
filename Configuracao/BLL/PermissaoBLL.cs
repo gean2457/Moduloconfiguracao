@@ -37,8 +37,8 @@ namespace BLL
         }
          private void ValidarDados(Permissao _permissao)
         {
-            if (_permissao.Descricao.Length > 500)
-                throw new Exception("so pode conter 500 caracteres ");
+            if (_permissao.Descricao.Length <= 3)
+                throw new Exception("Os caracteres nao pode ser menor que 3 ");
         }
     }
 }
