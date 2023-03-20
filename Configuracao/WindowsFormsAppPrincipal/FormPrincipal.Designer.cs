@@ -69,6 +69,7 @@
             this.grupoUsuariosToolStripMenuItem.Name = "grupoUsuariosToolStripMenuItem";
             this.grupoUsuariosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.grupoUsuariosToolStripMenuItem.Text = "GrupoUsuarios";
+            this.grupoUsuariosToolStripMenuItem.Click += new System.EventHandler(this.grupoUsuariosToolStripMenuItem_Click);
             // 
             // permissõesToolStripMenuItem
             // 
@@ -85,6 +86,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormPrincipal";
             this.Text = "Modulo Configuracao";
+            this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

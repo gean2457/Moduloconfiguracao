@@ -16,7 +16,7 @@ namespace DAL
             try
             {
                 SqlCommand cmd = cn.CreateCommand();
-                cmd.CommandText = @"INSERT INTO GRupoUsuario(NomeGrupo)
+                cmd.CommandText = @"INSERT INTO GrupoUsuario(NomeGrupo)
                                 VALUES(@NomeGrupo)";
                 cmd.CommandType = System.Data.CommandType.Text;
                 cmd.Parameters.AddWithValue("@NomeGrupo", _grupoUsuario.NomeGrupo);

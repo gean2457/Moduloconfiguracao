@@ -28,7 +28,7 @@ namespace WindowsFormsAppPrincipal
         {
             if (usuarioBindingSource.Count <= 0)
             {
-                MessageBox.Show("Nao existe registro para ser excluid. ");
+                MessageBox.Show("Nao existe registro para ser excluir. ");
                 return;
             }
 
@@ -38,6 +38,26 @@ namespace WindowsFormsAppPrincipal
             int Id = ((Usuario)usuarioBindingSource.Current).Id;
             new UsuarioBLL().Excluir(Id);
             usuarioBindingSource.RemoveCurrent();
+            MessageBox.Show("registro excluido com sucesso!");
+        }
+
+        private void buttonAdicionarUsuario_Click(object sender, EventArgs e)
+        {
+            using (FormCadastroUsuario frm = new FormCadastroUsuario())
+            {
+                frm.ShowDialog();
+            }
+              buttonBuscar_Click(null, null);
+        }
+
+        private void buttonAltear_Click(object sender, EventArgs e)
+        {
+            int id = ((Usuario)usuarioBindingSource.Current).Id;
+            using (FormCadastroUsuario frm = new FormCadastroUsuario(id))
+            {
+                frm.ShowDialog();
+            }
+             buttonBuscar_Click(null,null);
         }
     }
 }
