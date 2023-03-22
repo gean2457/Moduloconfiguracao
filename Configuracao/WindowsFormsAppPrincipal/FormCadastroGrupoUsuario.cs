@@ -15,7 +15,7 @@ namespace WindowsFormsAppPrincipal
     public partial class FormCadastroGrupoUsuario : Form
     {
         public int Id;
-        public FormCadastroGrupoUsuario(int _id =0)
+        public FormCadastroGrupoUsuario(int _id = 0)
         {
             InitializeComponent();
             Id = _id;
@@ -31,6 +31,12 @@ namespace WindowsFormsAppPrincipal
                 grupoUsuarioBLL.Alterar((GrupoUsuario)grupoUsuarioBindingSource.Current);
             MessageBox.Show("Registro salvo com sucesso");
             Close();
+        }
+
+        private void FormCadastroGrupoUsuario_Load(object sender, EventArgs e)
+        {
+            if (Id == 0)
+                grupoUsuarioBindingSource.AddNew();
         }
     }
 }

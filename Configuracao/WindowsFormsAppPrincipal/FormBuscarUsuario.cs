@@ -59,5 +59,26 @@ namespace WindowsFormsAppPrincipal
             }
              buttonBuscar_Click(null,null);
         }
+
+        private void buttonadicianarGrupoUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (Form1ConsultaGrupoUsuariocs frm = new Form1ConsultaGrupoUsuariocs())
+                {
+                    frm.ShowDialog();
+                    if (frm.Id != 0)
+                    {
+                        int idUsuario = ((Usuario)usuarioBindingSource.Current).Id;
+                        new UsuarioBLL().AdicionarGrupoUsuario(idUsuario,frm.Id);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

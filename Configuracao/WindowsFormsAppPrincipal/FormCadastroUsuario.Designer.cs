@@ -179,6 +179,7 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "Cadastro de Usuario";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // buttonSalvar
             // 

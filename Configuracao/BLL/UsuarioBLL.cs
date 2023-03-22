@@ -58,5 +58,11 @@ namespace BLL
              if(_usuario.Nome.Length<= 2)
                 throw new Exception("O nome deve ter mais de 2 caracteres.");
         }
+
+        public void AdicionarGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
+        {
+            if(!new UsuarioDAL().UsuarioPertenceAoGrupo(_idUsuario,_idGrupoUsuario))
+            new UsuarioDAL().AdicionarGrupoUsuario(_idUsuario, _idGrupoUsuario);
+        }
     }
 }

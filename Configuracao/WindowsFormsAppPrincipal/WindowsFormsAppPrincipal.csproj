@@ -52,6 +52,12 @@
     <Compile Include="BuscarGrupoUsuario.Designer.cs">
       <DependentUpon>BuscarGrupoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form1ConsultaGrupoUsuariocs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1ConsultaGrupoUsuariocs.Designer.cs">
+      <DependentUpon>Form1ConsultaGrupoUsuariocs.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBuscarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BuscarGrupoUsuario.resx">
       <DependentUpon>BuscarGrupoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1ConsultaGrupoUsuariocs.resx">
+      <DependentUpon>Form1ConsultaGrupoUsuariocs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormBuscarUsuario.resx">
       <DependentUpon>FormBuscarUsuario.cs</DependentUpon>

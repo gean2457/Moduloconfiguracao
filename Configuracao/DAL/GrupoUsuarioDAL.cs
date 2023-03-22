@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System;
 using System.Data.SqlClient;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 
 namespace DAL
 {
@@ -184,6 +185,45 @@ namespace DAL
                 throw new Exception("ocorreu erro ao tentar excluir um usuario no banco de dados: ", ex);
             }
 
+        }
+
+        public List<GrupoUsuario> BuscarPorIdUsuario(int _idUsuario)
+        {
+            List<GrupoUsuario> grupousuarios = new List<GrupoUsuario>();
+            GrupoUsuario grupousuario;
+            SqlConnection cn = new SqlConnection(Conexao.StringDeConexao);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                cmd.CommandText = @"SELECT GrupoUsuario.Id, GrupoUsuario.NomeGrupo FROM GrupoUsuario
+                                     INNER JOIN UsuarioGrupoUsuario ON GrupoUsuario.Id = UsuarioGrupoUsuario.IdGrupoUsuario
+                                      WHERE UsuarioGrupoUsuario.IdUsuario = @IdUsuario";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.AddWithValue("@IdUsuario", _idUsuario);
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
+                {
+                    while (rd.Read())
+                    {
+                        grupousuario = new GrupoUsuario();
+                        grupousuario.Id = Convert.ToInt32(rd["ID"]);
+                        grupousuario.NomeGrupo = rd["NomeGrupo"].ToString();
+                        grupousuarios.Add(grupousuario);
+
+                    }
+                }
+                return grupousuarios;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("ocorreu um erro ao tentar buscar grupos de usuarios por id no banco de dados", ex);
+            }
+            finally
+            {
+                cn.Close();
+            }
         }
     }
 }
