@@ -41,7 +41,7 @@
             this.senhaTextBox = new System.Windows.Forms.TextBox();
             this.ativoCheckBox = new System.Windows.Forms.CheckBox();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxconfirmarSenha = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSalvar = new System.Windows.Forms.Button();
@@ -153,12 +153,12 @@
             this.emailTextBox.Size = new System.Drawing.Size(220, 22);
             this.emailTextBox.TabIndex = 11;
             // 
-            // textBox1
+            // textBoxconfirmarSenha
             // 
-            this.textBox1.Location = new System.Drawing.Point(446, 255);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(101, 22);
-            this.textBox1.TabIndex = 12;
+            this.textBoxconfirmarSenha.Location = new System.Drawing.Point(446, 255);
+            this.textBoxconfirmarSenha.Name = "textBoxconfirmarSenha";
+            this.textBoxconfirmarSenha.Size = new System.Drawing.Size(101, 22);
+            this.textBoxconfirmarSenha.TabIndex = 12;
             // 
             // label1
             // 
@@ -213,7 +213,7 @@
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxconfirmarSenha);
             this.Controls.Add(emailLabel);
             this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.ativoCheckBox);
@@ -250,7 +250,7 @@
         private System.Windows.Forms.TextBox senhaTextBox;
         private System.Windows.Forms.CheckBox ativoCheckBox;
         private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxconfirmarSenha;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonSalvar;

@@ -40,5 +40,15 @@ namespace WindowsFormsAppPrincipal
                 frm.ShowDialog();
             }
         }
+
+        private void buttonAlterar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonExcluirPermissao_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

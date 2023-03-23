@@ -38,5 +38,10 @@ namespace WindowsFormsAppPrincipal
             if (Id == 0)
                 grupoUsuarioBindingSource.AddNew();
         }
+
+        private void buttonCancelarGrupoUsuario_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

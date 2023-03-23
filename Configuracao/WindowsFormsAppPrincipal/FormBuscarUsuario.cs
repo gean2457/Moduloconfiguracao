@@ -64,6 +64,9 @@ namespace WindowsFormsAppPrincipal
         {
             try
             {
+                if (usuarioBindingSource.Count == 0)
+                    throw new Exception("Não existe usuário selecionado para adicionar um grupo.");
+
                 using (Form1ConsultaGrupoUsuariocs frm = new Form1ConsultaGrupoUsuariocs())
                 {
                     frm.ShowDialog();
@@ -73,11 +76,27 @@ namespace WindowsFormsAppPrincipal
                         new UsuarioBLL().AdicionarGrupoUsuario(idUsuario,frm.Id);
                     }
                 }
+                buttonBuscar_Click(null, null);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonExcluirGrupoUsuario_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int idGrupoUsuario = ((GrupoUsuario)grupoUsuariosBindingSource.Current).Id;
+                int IdUsuario = ((Usuario)usuarioBindingSource.Current).Id;
+                new UsuarioBLL().RemoverGrupoUsuario(IdUsuario, idGrupoUsuario);
+                grupoUsuariosBindingSource.RemoveCurrent();
             }
             catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message);
             }
         }
     }

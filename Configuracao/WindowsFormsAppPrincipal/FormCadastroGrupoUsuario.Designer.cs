@@ -91,6 +91,7 @@
             this.buttonCancelarGrupoUsuario.TabIndex = 4;
             this.buttonCancelarGrupoUsuario.Text = "Cancelar";
             this.buttonCancelarGrupoUsuario.UseVisualStyleBackColor = true;
+            this.buttonCancelarGrupoUsuario.Click += new System.EventHandler(this.buttonCancelarGrupoUsuario_Click);
             // 
             // FormCadastroGrupoUsuario
             // 

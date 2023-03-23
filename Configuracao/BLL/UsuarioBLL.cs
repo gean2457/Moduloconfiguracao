@@ -2,27 +2,28 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
 namespace BLL
 {
     public class UsuarioBLL
     {
-        public void Inserir(Usuario _usuario)
+        public void Inserir(Usuario _usuario , string _confirmacaoDaSenha)
         {
-            ValidarDados(_usuario);
+            ValidarDados(_usuario, _confirmacaoDaSenha);
              UsuarioDAL usuarioDAL = new UsuarioDAL();
-            usuarioDAL.Inserir(_usuario);
+            usuarioDAL.Inserir(_usuario, _confirmacaoDaSenha);
            // pode ser usada essas duas formas
            //new UsuarioDAL().Inserir(_usuario);
             
             
             
         }
-        public void Alterar(Usuario _usuario)
+        public void Alterar(Usuario _usuario, string _confirmacaoDaSenha)
         {
-            ValidarDados(_usuario);
+            ValidarDados(_usuario , _confirmacaoDaSenha);
             UsuarioDAL usuarioDAL = new UsuarioDAL();
-            usuarioDAL.Alterar(_usuario);
+            usuarioDAL.Alterar(_usuario, _confirmacaoDaSenha);
 
         }
 
@@ -50,8 +51,10 @@ namespace BLL
         {
             return new UsuarioDAL().BuscarPorNomeUsuario(_nomeusuario);
         }
-         private void ValidarDados(Usuario _usuario)
+         private void ValidarDados(Usuario _usuario , string _confirmacaoDaSenha)
         {
+            if (_usuario.Senha != _confirmacaoDaSenha)
+                throw new Exception("A senha e a validação da senha devem ser iguais.");
             if (_usuario.Senha.Length <= 3)
                 throw new Exception("a senha deve ter mais de 3 caracteres");
            
@@ -64,5 +67,11 @@ namespace BLL
             if(!new UsuarioDAL().UsuarioPertenceAoGrupo(_idUsuario,_idGrupoUsuario))
             new UsuarioDAL().AdicionarGrupoUsuario(_idUsuario, _idGrupoUsuario);
         }
+
+        public void RemoverGrupoUsuario(int _idUsuario, int _idGrupoUsuario)
+        {
+            new UsuarioDAL().RemoverGrupousuario(_idUsuario, _idGrupoUsuario);
+        }
+        
     }
 }
